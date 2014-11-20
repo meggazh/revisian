@@ -1,0 +1,17 @@
+public function get_all()
+	    {
+		$this->load->library('datatables'); //load library datatable
+	
+		$this->datatables->select('MstApprID,MstApprName,MstAppr1,MstApprTitle1,MstAppr2,MstApprTitle2,MstAppr3,MstApprTitle3,MstAppr4,MstApprTitle4,MstEmpID')
+			 ->from('mstappr')
+			 ->add_column('Action',
+				        	'<a href="'.site_url('mstappr/edit/$1').'" class="btn btn-xs btn-warning">
+				        	Edit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+				        	<a href="'.site_url('mstappr/hapus/$1').'" class="btn btn-xs btn-danger">
+				        	Hapus</a>  
+				        	','MstApprID');
+		
+		
+		echo $this->datatables->generate();
+							
+	      }
